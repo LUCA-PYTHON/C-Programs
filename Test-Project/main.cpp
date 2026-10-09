@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <cstring>
+#include <string.h>
 
 int main(void)
 {
@@ -9,7 +9,7 @@ int main(void)
     float f;
     double d;
     char c;
-    str s[20];
+    char s[100];
 
     int komma;
 
@@ -18,37 +18,37 @@ int main(void)
 
     if (strcmp(datentyp, "integer") == 0 || strcmp(datentyp, "int") == 0 || strcmp(datentyp, "i") == 0)
     {
-        printf("Gebe eine ganze Zahl ein: ")
-            scanf("%i", i);
-        printf(i)
+        printf("Gebe eine ganze Zahl ein: ");
+        scanf("%d", &i);
+        printf("Deine Zahl: %d\n", i);
     }
     else if (strcmp(datentyp, "float") == 0 || strcmp(datentyp, "f") == 0)
     {
-        printf("Gebe eine Zahl ein: ")
-            canf("%f", f);
+        printf("Gebe eine Zahl ein: ");
+        scanf("%f", &f);
         printf("Wie viele Nachkommastellen? ");
-        scanf("%d", komma);
+        scanf("%d", &komma);
         printf("Deine Zahl: %.*f\n", komma, f);
     }
     else if (strcmp(datentyp, "double") == 0 || strcmp(datentyp, "d") == 0)
     {
-        printf("Gebe eine Zahl ein: ")
-            canf("%d", d);
+        printf("Gebe eine Zahl ein: ");
+        scanf("%lf", &d);
         printf("Wie viele Nachkommastellen? ");
-        scanf("%d", komma);
-        printf("Deine Zahl: %.*d\n", komma, d);
+        scanf("%d", &komma);
+        printf("Deine Zahl: %.*lf\n", komma, d);
     }
     else if (strcmp(datentyp, "char") == 0 || strcmp(datentyp, "c") == 0)
     {
-        printf("Gebe eine Zeichen ein: ")
-            canf("%c", c);
-        printf(c)
+        printf("Gebe eine Zeichen ein: ");
+        scanf("%c", &c);
+        printf("Dein Zeichen: %c\n", c);
     }
     else if (strcmp(datentyp, "string") == 0 || strcmp(datentyp, "s") == 0)
     {
-        printf("Gebe eine Satz/Wort ein: ")
-            canf("%s", s);
-        printf(s)
+        printf("Gebe eine Satz/Wort ein: ");
+        scanf("%99s", s);
+        printf("Dein Satz/Wort: %s\n", s);
     }
     else
     {
