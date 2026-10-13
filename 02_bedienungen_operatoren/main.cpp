@@ -1,3 +1,5 @@
+/*C++ Lernplan Teil2*/
+/*Lernen von Eingabe/Ausgabe und Auswerten der Eingabe. Deutsch mehr IF/ELSE Abfragen.*/
 #include <iostream>
 
 using namespace std;

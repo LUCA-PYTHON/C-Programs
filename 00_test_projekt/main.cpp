@@ -1,3 +1,6 @@
+/*Test Projekt*/
+/*Das hier ist ein Projekt indem Tests durchgeführt wurden und in Zukunft gemacht werden.*/
+/*SObald neues Projekt rutscht dieses in /99_archiv*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

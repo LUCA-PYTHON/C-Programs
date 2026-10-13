@@ -1,3 +1,6 @@
+/*C++ Lernplan Teil1*/
+/*Lernen von Eingabe/Ausgabe und Rechnen mit den Eingaben. Dazu alles sauber und verständlich ausgeben.*/
+/*Bei Nenner (Division) Null Fehlermeldung anzeigen.*/
 #include <iostream>
 
 using namespace std;
