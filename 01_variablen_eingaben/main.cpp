@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main(void)
+int main()
 {
 
     float zahl1, zahl2;
