@@ -1,5 +1,6 @@
 /*C Lernplan Teil2*/
 /*Lernen von Eingabe/Ausgabe und Auswerten der Eingabe. Deutsch mehr IF/ELSE Abfragen.*/
+/*Module: Umwandeln von Float in Int*/
 #include <stdio.h>
 
 int main(void)
@@ -10,13 +11,31 @@ int main(void)
     scanf("%f", &zahl);
     printf("\n");
 
+    int ganzzahl = (int)zahl; //Umwandeln von float in int (Modulo)
+
     if (zahl > 0)
     {
-        printf("Positive Zahl");
+        printf("Positive Zahl\n");
+        if (ganzzahl % 2 == 0)
+        {
+            printf("Gerade Zahl");
+        }
+        else if (ganzzahl % 2 != 0)
+        {
+            printf("Ungerade Zahl");
+        }
     }
     else if (zahl < 0)
     {
-        printf("Negative Zahl");
+        printf("Negative Zahl\n");
+        if (ganzzahl % 2 == 0)
+        {
+            printf("Gerade Zahl");
+        }
+        else if (ganzzahl % 2 != 0)
+        {
+            printf("Ungerade Zahl");
+        }
     }
     else if (zahl == 0)
     {
