@@ -10,16 +10,16 @@ int main(void)
     char rechenzeichen;
 
     printf("Zahl 1: ");
-    scanf("%f", zahl1);
+    scanf("%f", &zahl1);
     printf("Zahl 2: ");
-    scanf("%f", zahl2);
+    scanf("%f", &zahl2);
 
-    printf("Addition: ", zahl1 + zahl2, "\n");
-    printf("Subtraktion: ", zahl1 + zahl2, "\n");
-    printf("Multiplikation: ", zahl1 * zahl2, "\n");
+    printf("Addition: %.2f\n", zahl1 + zahl2);
+    printf("Subtraktion: %.2f\n", zahl1 - zahl2);
+    printf("Multiplikation: %.2f\n", zahl1 * zahl2);
     if (zahl2 != 0)
     {
-        printf("Division: ", zahl1 / zahl2);
+        printf("Division: %.2f", zahl1 / zahl2);
     }
     else
     {
