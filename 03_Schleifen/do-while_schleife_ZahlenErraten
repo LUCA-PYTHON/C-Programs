@@ -1,0 +1,20 @@
+/*3.1 Lernplan*/
+/*Programm generiet zufällige Zahl und du musst diese erraten*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    int geheimzahl = rand() % 10 + 1; //zufällige Zahl zwischen 0 und 10
+    int eingabe;
+
+    do{
+        printf("Rate eine Zahl: ");
+        scanf("%i", &eingabe);
+        if (eingabe != geheimzahl){
+            printf("Falsch!\n");
+        }
+    }while(eingabe != geheimzahl);
+
+    printf("Richtig erraten. (%i)", geheimzahl);
+}
