@@ -30,7 +30,7 @@ int main(void)
         printf("Gebe eine Zahl ein: ");
         scanf("%f", &f);
         printf("Wie viele Nachkommastellen? ");
-        scanf("%d", &komma);
+        scanf(" %d", &komma);
         printf("Deine Zahl: %.*f\n", komma, f);
     }
     else if (strcmp(datentyp, "double") == 0 || strcmp(datentyp, "d") == 0)
@@ -38,7 +38,7 @@ int main(void)
         printf("Gebe eine Zahl ein: ");
         scanf("%lf", &d);
         printf("Wie viele Nachkommastellen? ");
-        scanf("%d", &komma);
+        scanf(" %d", &komma);
         printf("Deine Zahl: %.*lf\n", komma, d);
     }
     else if (strcmp(datentyp, "char") == 0 || strcmp(datentyp, "c") == 0)
