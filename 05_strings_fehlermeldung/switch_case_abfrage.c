@@ -1,5 +1,6 @@
 /*5.1 Lernplan*/
-/*Verwenden von switch und case um eingabe schneller zu überprüfen.*/
+/*Verwenden von switch und case um eingabe schneller zu überprüfen.
+15.10.2026 Hinzugefügt: default abfrage mit ungültiger Eingabe.*/
 #include <stdio.h>
 
 int main(void)
@@ -30,6 +31,10 @@ int main(void)
 
     case 4:
         printf("Dividieren ausgeweahlt");
+        break;
+
+    default:
+        printf("Falsche Eingabe!");
         break;
     }
     return 0;
