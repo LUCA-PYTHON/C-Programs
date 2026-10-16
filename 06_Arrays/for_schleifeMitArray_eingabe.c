@@ -14,10 +14,11 @@ int main(void)
         61, 62, 63, 64, 65, 66, 67, 68, 69, 70,
         71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
         81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
-        91, 92, 93, 94, 95, 96, 97, 98, 99, 100};  // definieren des Arrays (1-100)
+        91, 92, 93, 94, 95, 96, 97, 98, 99, 100}; // definieren des Arrays (1-100)
     float summe = 0;
     float durchschnitt;
     int anzahl;
+    int bigges = zahlen[0];
 
     printf("Wie viele Zahlen möchtest du im Array: "); // Abfrage wie viele Zahlen man im Array will
     scanf("%i", &anzahl);
@@ -33,12 +34,18 @@ int main(void)
         printf("Zahl: %.2f\n", zahlen[i]);
 
         summe = summe + zahlen[i];
+
+        if (bigges < zahlen[i])
+        {
+            bigges = zahlen[i];
+        }
     }
 
     durchschnitt = summe / anzahl;
 
     printf("Summe: %.2f\n", summe);
-    printf("Durchschnitt: %.2f", durchschnitt);
+    printf("Durchschnitt: %.2f\n", durchschnitt);
+    printf("Groesste Zahl: %i", bigges);
 
     return 0;
 }
