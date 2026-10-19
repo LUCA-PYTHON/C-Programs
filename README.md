@@ -1,4 +1,4 @@
-# C-Programs – C programmieren lernen
+# C-Programs
 
 Dieses Repository enthält meine Übungen, Beispiele und kleinen Projekte aus dem Bereich der Programmiersprache **C**. Es dient dazu, grundlegende Programmierkonzepte zu lernen, praktisch anzuwenden und meine Fortschritte zu dokumentieren.
 
