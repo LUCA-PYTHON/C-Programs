@@ -8,13 +8,14 @@ if "%~1"=="/?" goto help
 set "SOURCE=%~1"
 
 if not defined SOURCE (
-    echo Fehler: Keine C-Datei angegeben.
+    echo FEHLER!
     echo Oeffne eine C-Datei in VS Code und druecke F11.
     exit /b 1
 )
 
 if not exist "%SOURCE%" (
-    echo Fehler: Datei "%SOURCE%" nicht gefunden.
+    echo FEHLER!
+    echo Datei "%SOURCE%" nicht gefunden.
     exit /b 1
 )
 
@@ -24,7 +25,8 @@ gcc -std=c11 -Wall -Wextra -Wpedantic -g "%SOURCE%" -o "%PROGRAM%"
 
 if errorlevel 1 (
     echo.
-    echo FEHLER: Kompilierung fehlgeschlagen.
+    echo FEHLER!
+    echo Kompilierung fehlgeschlagen.
     pause
     exit /b 1
 )
