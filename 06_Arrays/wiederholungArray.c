@@ -1,3 +1,5 @@
+/*6.4 Lernpln*/
+/*Kleine Wiederholung zum Thema Arrays auswerten mithilfe von for Shcleifen und rechen Funktionen*/
 #include <stdio.h>
 
 int main(void)
