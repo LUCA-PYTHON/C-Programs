@@ -1,7 +1,7 @@
 /*
  * titel: do-while schleife PositivenZahlenZähler
  * schwierigkeit: 1
- * themen: dp-while-schleife
+ * themen: do-while-schleife
  */
 #include <stdio.h>
 

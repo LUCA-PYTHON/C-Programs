@@ -1,6 +1,5 @@
 /*
 titel: 02_Bedienungen_Projekt1
-beschreibung: Abfrage ob eine Person volljährig (18 oder älter) ist
 level: 1
 themen: if/else
 */

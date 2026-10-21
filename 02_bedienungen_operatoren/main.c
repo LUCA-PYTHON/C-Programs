@@ -1,6 +1,5 @@
 /*
 titel: 02_Bedienungen
-beschreibung: if/else Verwendung und Umwandlung von float in int.
 level: 1
 themen: rechnen, if/else, datentypen umwandeln
 */

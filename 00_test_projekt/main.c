@@ -1,6 +1,5 @@
 /*
 titel: Test Projekt
-beschreibung: Das hier ist ein Projekt indem Tests durchgeführt wurden
 level: 1
 themen: -
 */

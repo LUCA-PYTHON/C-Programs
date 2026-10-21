@@ -1,6 +1,5 @@
 /*
 titel: 02_Bedienungen_Projekt2
-beschreibung: Noten Umrechner, UND/ODER abfragen hinzugefügt
 level: 1
 themen: if/else, UND/ODER, rechnen
 */

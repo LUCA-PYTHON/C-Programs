@@ -1,6 +1,5 @@
 /*
 titel: 01_Variablen_Eingaben
-beschreibung: Rechnen lernen mithilfe von Ein-/Ausgaben
 level: 1
 themen: Rechnen, Eingaben, Ausgaben
 */
