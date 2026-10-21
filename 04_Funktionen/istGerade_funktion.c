@@ -1,7 +1,7 @@
 /*
  * titel: istGerade funktion
  * schwierigkeit: 1
- * themen: funktionen, mudolo, if/else
+ * themen: funktionen, modulo, if/else
  */
 #include <stdio.h>
 
