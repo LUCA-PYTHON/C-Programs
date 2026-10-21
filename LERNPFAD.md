@@ -37,7 +37,7 @@ Ordner: [`03_Schleifen/`](03_Schleifen/)
 | Titel | Schwierigkeit | Themen |
 | --- | --- | --- |
 | [do-while schleife Einstieg](03_Schleifen/do-while_schleife.c) | Einsteiger | do-while-schleife |
-| [do-while schleife PositivenZahlenZähler](03_Schleifen/do-while_schleife_PositivenZahlenZ%C3%A4hler.c) | Einsteiger | dp-while-schleife |
+| [do-while schleife PositivenZahlenZähler](03_Schleifen/do-while_schleife_PositivenZahlenZ%C3%A4hler.c) | Einsteiger | do-while-schleife |
 | [do-while schleife ZahlenErraten](03_Schleifen/do-while_schleife_ZahlenErraten.c) | Einsteiger | do-while-schleife, if/else |
 | [for-Schleife](03_Schleifen/for_schleife.c) | Einsteiger | for-schleifen |
 | [while schleife](03_Schleifen/while_schleife.c) | Einsteiger | while-schleifen |
@@ -74,8 +74,8 @@ Ordner: [`06_Arrays/`](06_Arrays/)
 | --- | --- | --- |
 | [for schleifeMitArray](06_Arrays/for_schleifeMitArray.c) | Einsteiger | arrays, for-schleife |
 | [wiederholungArray](06_Arrays/wiederholungArray.c) | Einsteiger | arrays, for-schleife, sizeof |
-| [for schleifeMitArray eingabe](06_Arrays/for_schleifeMitArray_eingabe.c) | Aufbau | arrays, if/else, for-schleife |
-| [for schleifeMitArray erweiterung](06_Arrays/for_schleifeMitArray_erweiterung.c) | Aufbau | arrays, sizeof, for-schleife |
+| [for schleifeMitArray eingabe](06_Arrays/for_schleifeMitArray_eingabe.c) | Fortgeschritten | arrays, if/else, for-schleife |
+| [for schleifeMitArray erweiterung](06_Arrays/for_schleifeMitArray_erweiterung.c) | Fortgeschritten | arrays, sizeof, for-schleife |
 
 ## 07 · Pointer Const Funktionen
 
@@ -91,4 +91,4 @@ Ordner: [`98_taschenrechner/`](98_taschenrechner/)
 
 | Titel | Schwierigkeit | Themen |
 | --- | --- | --- |
-| [taschenrechner](98_taschenrechner/taschenrechner.c) | Aufbau | taschenrechner, projekt |
+| [taschenrechner](98_taschenrechner/taschenrechner.c) | Fortgeschritten | taschenrechner, projekt |
