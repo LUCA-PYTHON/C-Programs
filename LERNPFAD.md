@@ -50,7 +50,7 @@ Ordner: [`04_Funktionen/`](04_Funktionen/)
 | --- | --- | --- |
 | [addieren funktion](04_Funktionen/addieren_funktion.c) | Einsteiger | funktionen, addieren |
 | [flächenrechner funktion](04_Funktionen/fl%C3%A4chenrechner_funktion.c) | Einsteiger | funktionen, multiplizieren |
-| [istGerade funktion](04_Funktionen/istGerade_funktion.c) | Einsteiger | funktionen, mudolo, if/else |
+| [istGerade funktion](04_Funktionen/istGerade_funktion.c) | Einsteiger | funktionen, modulo, if/else |
 | [taschenrechner mitFunktionen](04_Funktionen/taschenrechner_mitFunktionen.c) | Einsteiger | funktionen, addieren, subtrahieren, multiplizieren, dividieren, if/else |
 | [void int FunktionUnterschied](04_Funktionen/void_int_FunktionUnterschied.c) | Einsteiger | funktionen |
 
@@ -83,7 +83,7 @@ Ordner: [`07_pointer_const_funktionen/`](07_pointer_const_funktionen/)
 
 | Titel | Schwierigkeit | Themen |
 | --- | --- | --- |
-| [constVariablen](07_pointer_const_funktionen/constVariablen.c) | Einsteiger | pointer, const |
+| [constVariablen](07_pointer_const_funktionen/constVariablen.c) | Einsteiger | const |
 
 ## 98 · Taschenrechner
 
