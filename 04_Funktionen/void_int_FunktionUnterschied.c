@@ -1,7 +1,8 @@
-/*4.2 Lernplan*/
-/*unterschied "int" Funktion und "void" Funktion.
-Mithilfe von int/float/... kann man Werte zurückgeben. 
-Bei einer void Funktion wird nur etwas ausgeführt und nichts zurück gegeben.*/
+/*
+ * titel: void int FunktionUnterschied
+ * schwierigkeit: 1
+ * themen: funktionen
+ */
 #include <stdio.h>
 
 int mitRueckgabe(int rückgabe)

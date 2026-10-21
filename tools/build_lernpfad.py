@@ -40,7 +40,7 @@ ROOT = Path(__file__).resolve().parent.parent
 FOLDER_PATTERN = re.compile(r"^\d{2}_")      # nur Ordner wie 03_Schleifen
 EXCLUDE_DIRS: set[str] = set()               # z. B. {"00_test_projekt"}
 SKIP_PARTS = {"build", "bin", "obj"}         # Unterordner, die ignoriert werden
-LEVELS = {1: "Einsteiger", 2: "Aufbau", 3: "Fortgeschritten"}
+LEVELS = {1: "Einsteiger", 2: "Fortgeschritten", 3: "Professionel"}
 KEYS = {"titel", "schwierigkeit", "level", "themen"}
 OUTPUT_FILE = "LERNPFAD.md"
 

@@ -1,6 +1,9 @@
-/*C Lernplan Teil2*/
-/*Lernen von Eingabe/Ausgabe und Auswerten der Eingabe. Deutsch mehr IF/ELSE Abfragen.*/
-/*Module: Umwandeln von Float in Int*/
+/*
+titel: 02_Bedienungen
+beschreibung: if/else Verwendung und Umwandlung von float in int.
+level: 1
+themen: rechnen, if/else, datentypen umwandeln
+*/
 #include <stdio.h>
 
 int main(void)

@@ -1,6 +1,9 @@
-/*Test Projekt*/
-/*Das hier ist ein Projekt indem Tests durchgeführt wurden und in Zukunft gemacht werden.*/
-/*SObald neues Projekt rutscht dieses in /99_archiv*/
+/*
+titel: Test Projekt
+beschreibung: Das hier ist ein Projekt indem Tests durchgeführt wurden
+level: 1
+themen: -
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

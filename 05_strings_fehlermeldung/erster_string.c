@@ -1,6 +1,8 @@
-/*5.0 Lernplan*/
-/*Das erste mal arbeiten mit strings in C.
-Beachte: nicht entfernen vom Zeilenumbruch führt nach der Eingabe zu einem "\n"*/
+/*
+ * titel: erster string
+ * schwierigkeit: 1
+ * themen: string, strcspn, fgets
+ */
 #include <stdio.h>
 #include <string.h>
 

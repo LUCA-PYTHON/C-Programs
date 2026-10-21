@@ -1,6 +1,8 @@
-/*3.0 Lernplan*/
-/*Programm Zählt Positive zahlen und endet erst wenn man keine weiteren Zahlen mehr eingeben möchte.
-Bedeutet: Eingabe "J" weitere Zahl eingeben, Eingabe "N" Schleife wird beendet.*/
+/*
+ * titel: do-while schleife PositivenZahlenZähler
+ * schwierigkeit: 1
+ * themen: dp-while-schleife
+ */
 #include <stdio.h>
 
 int main(void)

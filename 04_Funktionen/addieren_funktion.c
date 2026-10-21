@@ -1,5 +1,8 @@
-/*4.0 Funktionen*/
-/*Erste kleine Funktion inder 2 Zahlen übergeben werden an die Addieren Funktion und darin mit "return" das Ergebnis zurück an main gesendet wird und ausgegeben.*/
+/*
+ * titel: addieren funktion
+ * schwierigkeit: 1
+ * themen: funktionen, addieren
+ */
 #include <stdio.h>
 
 int addieren(int a, int b){

@@ -1,3 +1,9 @@
+/*
+ * titel: do-while schleife Einstieg
+ * schwierigkeit: 1
+ * themen: do-while-schleife
+ */
+
 #include <stdio.h>
 
 int main(void){

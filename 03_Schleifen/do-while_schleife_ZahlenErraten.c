@@ -1,6 +1,8 @@
-/*3.1 Lernplan*/
-/*Programm generiet zufällige Zahl und du musst diese erraten. 
-15.10.2026: Hinzugefügt von "Zu Groß/klein".*/
+/*
+ * titel: do-while schleife ZahlenErraten
+ * schwierigkeit: 1
+ * themen: do-while-schleife, if/else
+ */
 #include <stdio.h>
 #include <stdlib.h>
 

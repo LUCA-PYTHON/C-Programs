@@ -1,3 +1,9 @@
+/*
+ * titel: while schleife
+ * schwierigkeit: 1
+ * themen: while-schleifen
+ */
+
 #include <stdio.h>
 
 int main(void){

@@ -1,5 +1,8 @@
-/*5.2 Lernplan*/
-/*Switch Case abfrage welchen string man eingebene hat. (Mittel Schwer)*/
+/*
+ * titel: strings switch case eingabe
+ * schwierigkeit: 1
+ * themen: strings, taschenrechner, if/else, strcspn, fgets
+ */
 #include <stdio.h>
 #include <string.h>
 

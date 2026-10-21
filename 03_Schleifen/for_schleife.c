@@ -1,3 +1,8 @@
+/*
+   * titel: for-Schleife
+   * schwierigkeit: 1
+   * themen: for-schleifen
+*/
 #include <stdio.h>
 
 int main(void){

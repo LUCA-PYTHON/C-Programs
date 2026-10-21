@@ -1,5 +1,8 @@
-/*6.0 Lernplan*/
-/*Verwenden von Arrays in for schleifen*/
+/*
+ * titel: for schleifeMitArray
+ * schwierigkeit: 1
+ * themen: arrays, for-schleife
+ */
 #include <stdio.h>
 #include <string.h>
 

@@ -1,6 +1,9 @@
-/*C Lernplan Teil1*/
-/*Lernen von Eingabe/Ausgabe und Rechnen mit den Eingaben. Dazu alles sauber und verständlich ausgeben.*/
-/*Bei Nenner (Division) Null Fehlermeldung anzeigen.*/
+/*
+titel: 01_Variablen_Eingaben
+beschreibung: Rechnen lernen mithilfe von Ein-/Ausgaben
+level: 1
+themen: Rechnen, Eingaben, Ausgaben
+*/
 #include <stdio.h>
 
 int main(void)

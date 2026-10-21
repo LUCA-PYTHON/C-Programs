@@ -1,5 +1,8 @@
-/*5.3 Lernplan*/
-/*Wiederholung, baue eine Eingabe, die sich ständig wiederholt. Bis man "/beenden" eingeben.*/
+/*
+ * titel: wiederholung while do
+ * schwierigkeit: 1
+ * themen: string, strcspn, fgets
+ */
 #include <stdio.h>
 #include <string.h>
 

@@ -1,5 +1,8 @@
-/*6.3 Lernplan*/
-/*Verwenden von Arreys in for schleifen mit eigener Eingabe*/
+/*
+ * titel: for schleifeMitArray eingabe
+ * schwierigkeit: 2
+ * themen: arrays, if/else, for-schleife
+ */
 #include <stdio.h>
 
 int main(void)

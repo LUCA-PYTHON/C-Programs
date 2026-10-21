@@ -1,3 +1,9 @@
+/*
+ * titel: taschenrechner
+ * schwierigkeit: 2
+ * themen: taschenrechner, projekt
+ */
+
 #include <stdio.h>
 #include <stdlib.h> /*allgemeine Funktionen z.B. umwandeln von Text in Zahlen*/
 #include <string.h> /*Zeichenkettenfunktionen*/

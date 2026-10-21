@@ -1,5 +1,8 @@
-/*4.2 Lernplan*/
-/*Rechteckfächenrechner mithilfe einer Funktion. Besonderheit hier werden floats verwendet.*/
+/*
+ * titel: flächenrechner funktion
+ * schwierigkeit: 1
+ * themen: funktionen, multiplizieren
+ */
 #include <stdio.h>
 
 float fleacheRechner(float a, float b)

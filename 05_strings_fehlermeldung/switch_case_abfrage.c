@@ -1,6 +1,8 @@
-/*5.1 Lernplan*/
-/*Verwenden von switch und case um eingabe schneller zu überprüfen.
-15.10.2026 Hinzugefügt: default abfrage mit ungültiger Eingabe.*/
+/*
+ * titel: switch case abfrage
+ * schwierigkeit: 1
+ * themen: strings, case
+ */
 #include <stdio.h>
 
 int main(void)

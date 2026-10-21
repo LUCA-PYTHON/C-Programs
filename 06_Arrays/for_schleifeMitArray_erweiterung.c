@@ -1,5 +1,8 @@
-/*6.1 Lernplan*/
-/*Verwenden von Arreys in for schleifen mit summe und durchschnitt*/
+/*
+ * titel: for schleifeMitArray erweiterung
+ * schwierigkeit: 2
+ * themen: arrays, sizeof, for-schleife
+ */
 #include <stdio.h>
 #include <string.h>
 

@@ -1,6 +1,9 @@
-/*C Lernplan Teil2.2*/
-/*Noten IF/ELSE abfrage (Simpel)*/
-/*UND/ODER hinzugefügt*/
+/*
+titel: 02_Bedienungen_Projekt2
+beschreibung: Noten Umrechner, UND/ODER abfragen hinzugefügt
+level: 1
+themen: if/else, UND/ODER, rechnen
+*/
 #include <stdio.h>
 
 int main(void)

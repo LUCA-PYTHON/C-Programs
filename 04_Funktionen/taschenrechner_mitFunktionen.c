@@ -1,5 +1,8 @@
-/*4.3 Lernplan*/
-/*Taschenrechner mit Funtkionen, unteranderem mit wenn division 0 -> Fehlermeldung*/
+/*
+ * titel: taschenrechner mitFunktionen
+ * schwierigkeit: 1
+ * themen: funktionen, addieren, subtrahieren, multiplizieren, dividieren, if/else
+ */
 #include <stdio.h>
 
 float addieren(float zahl1, float zahl2)

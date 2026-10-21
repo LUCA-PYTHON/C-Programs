@@ -1,5 +1,8 @@
-/*4.1 Funktionen*/
-/*Erste kleine Funktion istGerade, es wird überprüft durch eine Funktion ob eine Zahl gerade ist oder nicht.*/
+/*
+ * titel: istGerade funktion
+ * schwierigkeit: 1
+ * themen: funktionen, mudolo, if/else
+ */
 #include <stdio.h>
 
 int istGerade(int zahl){

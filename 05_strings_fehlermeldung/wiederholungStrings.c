@@ -1,6 +1,8 @@
-/*5.4 Lernplan*/
-/*Wiederholung der Strings mithilfe einer kleinen Kontaktkarte*/
-
+/*
+ * titel: wiederholungStrings
+ * schwierigkeit: 1
+ * themen: strings, strcspn, fgets
+ */
 #include <stdio.h>
 #include <string.h>
 
@@ -16,7 +18,7 @@ int main(void){
 
     printf("Gebe dein Alter ein: ");
     scanf("%i", &alter);
-    getchar();
+    getchar();  // Den Zeilenumbruch löschen nach eingabe sonst wird Hobby übersprungen
 
     printf("Gebe ein Hobby ein: ");
     fgets(hobby, sizeof(hobby), stdin);

@@ -1,5 +1,8 @@
-/*6.4 Lernpln*/
-/*Kleine Wiederholung zum Thema Arrays auswerten mithilfe von for Shcleifen und rechen Funktionen*/
+/*
+ * titel: wiederholungArray
+ * schwierigkeit: 1
+ * themen: arrays, for-schleife, sizeof
+ */
 #include <stdio.h>
 
 int main(void)
