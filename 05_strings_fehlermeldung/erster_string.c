@@ -1,7 +1,8 @@
 /*
- * titel: erster string
- * schwierigkeit: 1
- * themen: string, strcspn, fgets
+ * titel: Erster String: Name einlesen
+ * nr: 5.0
+ * schwierigkeit: 2
+ * themen: strings, fgets, strcspn
  */
 #include <stdio.h>
 #include <string.h>

@@ -1,7 +1,8 @@
 /*
- * titel: switch case abfrage
+ * titel: Menü mit switch/case
+ * nr: 5.1
  * schwierigkeit: 1
- * themen: strings, case
+ * themen: switch, eingabe, menü
  */
 #include <stdio.h>
 

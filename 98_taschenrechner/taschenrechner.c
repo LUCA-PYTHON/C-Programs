@@ -1,9 +1,9 @@
 /*
- * titel: taschenrechner
- * schwierigkeit: 2
- * themen: taschenrechner, projekt
+ * titel: Taschenrechner mit Befehlsmenü und Verlauf
+ * nr: 98.0
+ * schwierigkeit: 3
+ * themen: projekt, struct, strings, funktionen
  */
-
 #include <stdio.h>
 #include <stdlib.h> /*allgemeine Funktionen z.B. umwandeln von Text in Zahlen*/
 #include <string.h> /*Zeichenkettenfunktionen*/

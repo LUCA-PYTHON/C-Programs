@@ -1,7 +1,8 @@
 /*
- * titel: constVariablen
+ * titel: Konstanten mit const
+ * nr: 7.0
  * schwierigkeit: 1
- * themen: const
+ * themen: const, variablen
  */
 #include <stdio.h>
 

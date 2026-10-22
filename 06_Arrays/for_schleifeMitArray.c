@@ -1,7 +1,8 @@
 /*
- * titel: for schleifeMitArray
+ * titel: Array mit for-Schleife ausgeben
+ * nr: 6.0
  * schwierigkeit: 1
- * themen: arrays, for-schleife
+ * themen: arrays, for
  */
 #include <stdio.h>
 #include <string.h>

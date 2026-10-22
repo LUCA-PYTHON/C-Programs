@@ -1,7 +1,8 @@
 /*
- * titel: for schleifeMitArray erweiterung
+ * titel: Array: Summe und Durchschnitt
+ * nr: 6.1
  * schwierigkeit: 2
- * themen: arrays, sizeof, for-schleife
+ * themen: arrays, for, sizeof, durchschnitt
  */
 #include <stdio.h>
 #include <string.h>

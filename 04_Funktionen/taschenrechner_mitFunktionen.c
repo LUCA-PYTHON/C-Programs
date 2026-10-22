@@ -1,7 +1,8 @@
 /*
- * titel: taschenrechner mitFunktionen
- * schwierigkeit: 1
- * themen: funktionen, addieren, subtrahieren, multiplizieren, dividieren, if/else
+ * titel: Taschenrechner mit Funktionen
+ * nr: 4.4
+ * schwierigkeit: 2
+ * themen: funktionen, rechnen, if/else
  */
 #include <stdio.h>
 

@@ -1,8 +1,9 @@
 /*
-titel: 02_Bedienungen_Projekt2
-level: 1
-themen: if/else, UND/ODER, rechnen
-*/
+ * titel: Notenbewertung
+ * nr: 2.2
+ * schwierigkeit: 1
+ * themen: if/else, logische operatoren
+ */
 #include <stdio.h>
 
 int main(void)

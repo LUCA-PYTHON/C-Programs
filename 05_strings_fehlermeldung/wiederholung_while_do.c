@@ -1,7 +1,8 @@
 /*
- * titel: wiederholung while do
- * schwierigkeit: 1
- * themen: string, strcspn, fgets
+ * titel: Eingabeschleife bis /beenden
+ * nr: 5.3
+ * schwierigkeit: 2
+ * themen: strings, do-while, strcmp, fgets
  */
 #include <stdio.h>
 #include <string.h>

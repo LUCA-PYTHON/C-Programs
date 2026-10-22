@@ -1,7 +1,8 @@
 /*
- * titel: wiederholungArray
- * schwierigkeit: 1
- * themen: arrays, for-schleife, sizeof
+ * titel: Notendurchschnitt (Wiederholung Arrays)
+ * nr: 6.4
+ * schwierigkeit: 2
+ * themen: arrays, for, sizeof, durchschnitt
  */
 #include <stdio.h>
 

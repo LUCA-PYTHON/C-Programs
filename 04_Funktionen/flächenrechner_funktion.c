@@ -1,7 +1,8 @@
 /*
- * titel: flächenrechner funktion
+ * titel: Rechteck-Flächenrechner
+ * nr: 4.2
  * schwierigkeit: 1
- * themen: funktionen, multiplizieren
+ * themen: funktionen, parameter, float
  */
 #include <stdio.h>
 

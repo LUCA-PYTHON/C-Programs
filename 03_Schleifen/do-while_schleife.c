@@ -1,9 +1,9 @@
 /*
- * titel: do-while schleife Einstieg
+ * titel: do-while-Schleife: Beenden mit 0
+ * nr: 3.2
  * schwierigkeit: 1
- * themen: do-while-schleife
+ * themen: schleifen, do-while
  */
-
 #include <stdio.h>
 
 int main(void){

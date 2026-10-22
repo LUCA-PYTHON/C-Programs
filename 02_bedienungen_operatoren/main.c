@@ -1,8 +1,9 @@
 /*
-titel: 02_Bedienungen
-level: 1
-themen: rechnen, if/else, datentypen umwandeln
-*/
+ * titel: Zahl analysieren (positiv, negativ, gerade)
+ * nr: 2.0
+ * schwierigkeit: 1
+ * themen: if/else, modulo, typumwandlung
+ */
 #include <stdio.h>
 
 int main(void)

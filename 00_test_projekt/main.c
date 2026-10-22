@@ -1,8 +1,9 @@
 /*
-titel: Test Projekt
-level: 1
-themen: -
-*/
+ * titel: Datentypen-Test
+ * nr: 0.0
+ * schwierigkeit: 2
+ * themen: datentypen, eingabe, strcmp, if/else
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

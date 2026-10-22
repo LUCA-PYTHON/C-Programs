@@ -1,7 +1,8 @@
 /*
- * titel: do-while schleife PositivenZahlenZähler
- * schwierigkeit: 1
- * themen: do-while-schleife
+ * titel: Positive Zahlen zählen
+ * nr: 3.3
+ * schwierigkeit: 2
+ * themen: schleifen, do-while, zähler, if/else
  */
 #include <stdio.h>
 

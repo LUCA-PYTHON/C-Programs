@@ -1,7 +1,8 @@
 /*
- * titel: wiederholungStrings
- * schwierigkeit: 1
- * themen: strings, strcspn, fgets
+ * titel: Kontaktkarte (Wiederholung Strings)
+ * nr: 5.4
+ * schwierigkeit: 2
+ * themen: strings, fgets, strcspn
  */
 #include <stdio.h>
 #include <string.h>

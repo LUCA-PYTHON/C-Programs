@@ -1,8 +1,9 @@
 /*
-   * titel: for-Schleife
-   * schwierigkeit: 1
-   * themen: for-schleifen
-*/
+ * titel: Einmaleins mit for-Schleife
+ * nr: 3.0
+ * schwierigkeit: 1
+ * themen: schleifen, for
+ */
 #include <stdio.h>
 
 int main(void){

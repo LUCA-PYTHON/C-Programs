@@ -1,8 +1,9 @@
 /*
-titel: 02_Bedienungen_Projekt1
-level: 1
-themen: if/else
-*/
+ * titel: Volljährigkeits-Check
+ * nr: 2.1
+ * schwierigkeit: 1
+ * themen: if/else, vergleiche
+ */
 #include <stdio.h>
 
 int main(void)

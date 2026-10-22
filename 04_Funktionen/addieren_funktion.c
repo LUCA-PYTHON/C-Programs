@@ -1,7 +1,8 @@
 /*
- * titel: addieren funktion
+ * titel: Erste Funktion: Addieren
+ * nr: 4.0
  * schwierigkeit: 1
- * themen: funktionen, addieren
+ * themen: funktionen, parameter, rückgabewert
  */
 #include <stdio.h>
 

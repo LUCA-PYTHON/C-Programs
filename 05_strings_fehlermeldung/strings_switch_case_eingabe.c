@@ -1,7 +1,8 @@
 /*
- * titel: strings switch case eingabe
- * schwierigkeit: 1
- * themen: strings, taschenrechner, if/else, strcspn, fgets
+ * titel: Menü per Text-Befehl
+ * nr: 5.2
+ * schwierigkeit: 2
+ * themen: strings, fgets, strcmp, switch
  */
 #include <stdio.h>
 #include <string.h>

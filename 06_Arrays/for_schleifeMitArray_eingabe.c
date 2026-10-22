@@ -1,7 +1,8 @@
 /*
- * titel: for schleifeMitArray eingabe
+ * titel: Array: Anzahl wählen, Summe, Durchschnitt und Maximum
+ * nr: 6.3
  * schwierigkeit: 2
- * themen: arrays, if/else, for-schleife
+ * themen: arrays, for, eingabe, if/else
  */
 #include <stdio.h>
 

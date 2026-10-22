@@ -1,7 +1,8 @@
 /*
- * titel: void int FunktionUnterschied
- * schwierigkeit: 1
- * themen: funktionen
+ * titel: void- und int-Funktionen im Vergleich
+ * nr: 4.3
+ * schwierigkeit: 2
+ * themen: funktionen, void, rückgabewert
  */
 #include <stdio.h>
 

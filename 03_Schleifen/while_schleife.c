@@ -1,9 +1,9 @@
 /*
- * titel: while schleife
+ * titel: Countdown mit while-Schleife
+ * nr: 3.1
  * schwierigkeit: 1
- * themen: while-schleifen
+ * themen: schleifen, while
  */
-
 #include <stdio.h>
 
 int main(void){

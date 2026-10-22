@@ -1,8 +1,9 @@
 /*
-titel: 01_Variablen_Eingaben
-level: 1
-themen: Rechnen, Eingaben, Ausgaben
-*/
+ * titel: Rechnen mit Eingaben
+ * nr: 1.0
+ * schwierigkeit: 1
+ * themen: variablen, eingabe, ausgabe, rechnen
+ */
 #include <stdio.h>
 
 int main(void)

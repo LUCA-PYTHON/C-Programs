@@ -1,7 +1,8 @@
 /*
- * titel: do-while schleife ZahlenErraten
- * schwierigkeit: 1
- * themen: do-while-schleife, if/else
+ * titel: Zahlenraten-Spiel
+ * nr: 3.4
+ * schwierigkeit: 2
+ * themen: schleifen, do-while, zufall, if/else
  */
 #include <stdio.h>
 #include <stdlib.h>
