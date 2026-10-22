@@ -11,6 +11,7 @@ Header-Format (ganz am Dateianfang):
 
     /*
      * titel: for-Schleife
+     * nr: 3.0
      * schwierigkeit: 1
      * themen: schleifen, for
      */
@@ -40,8 +41,8 @@ ROOT = Path(__file__).resolve().parent.parent
 FOLDER_PATTERN = re.compile(r"^\d{2}_")      # nur Ordner wie 03_Schleifen
 EXCLUDE_DIRS: set[str] = set()               # z. B. {"00_test_projekt"}
 SKIP_PARTS = {"build", "bin", "obj"}         # Unterordner, die ignoriert werden
-LEVELS = {1: "Einsteiger", 2: "Fortgeschritten", 3: "Professionel"}
-KEYS = {"titel", "schwierigkeit", "level", "themen"}
+LEVELS = {1: "Einsteiger", 2: "Fortgeschritten", 3: "Professionell"}
+KEYS = {"titel", "nr", "schwierigkeit", "level", "themen"}
 OUTPUT_FILE = "LERNPFAD.md"
 
 HEADER_RE = re.compile(r"\A\ufeff?\s*/\*(.*?)\*/", re.S)
@@ -52,6 +53,7 @@ LINE_RE = re.compile(r"^\s*\*?\s*(\w+)\s*:\s*(.*?)\s*$")
 class Program:
     path: Path
     titel: str
+    nr: tuple[int, ...] | None = None
     level: int | None = None
     themen: list[str] = field(default_factory=list)
     missing: list[str] = field(default_factory=list)
@@ -102,12 +104,21 @@ def missing_keys(data: dict[str, str]) -> list[str]:
     return missing
 
 
+def parse_nr(value: str) -> tuple[int, ...] | None:
+    """'3.10' -> (3, 10), damit 3.10 nach 3.9 kommt. Ungültig -> None."""
+    parts = value.strip().split(".")
+    if parts and all(part.isdigit() for part in parts):
+        return tuple(int(part) for part in parts)
+    return None
+
+
 def read_program(path: Path) -> Program:
     text = path.read_bytes().decode("utf-8", errors="replace")
     data = parse_header(text)
     level = data.get("level", "")
     return Program(
         path=path,
+        nr=parse_nr(data.get("nr", "")),
         titel=data.get("titel") or path.stem.replace("_", " "),
         level=int(level) if level.isdigit() and int(level) in LEVELS else None,
         themen=[t.strip() for t in data.get("themen", "").split(",") if t.strip()],
@@ -134,7 +145,7 @@ def collect() -> list[Folder]:
     folders = []
     for d in number_dirs():
         programs = [read_program(p) for p in c_files(d)]
-        programs.sort(key=lambda p: (p.level if p.level is not None else 99, p.path.name.lower()))
+        programs.sort(key=lambda p: (p.nr is None, p.nr or (), p.level if p.level is not None else 99, p.path.name.lower()))
         if programs:
             folders.append(Folder(d.name, programs))
     return folders
