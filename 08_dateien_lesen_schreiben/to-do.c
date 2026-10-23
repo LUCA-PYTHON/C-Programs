@@ -15,7 +15,7 @@ int add(char task[50])
     {
         printf("Datei nicht gefunden");
         return 0;
-    }  
+    }
     fprintf(datei, "%s\n", task);
     fclose(datei);
 
@@ -56,27 +56,28 @@ int main(void)
     scanf("%i", &eingabe);
 
     while ((c = getchar()) != '\n' && c != EOF)
-    {}
+    {
+    }
 
-    switch(eingabe){
+    switch (eingabe)
+    {
 
-        case 1:
-            printf("Task: ");
-            if (fgets(task, sizeof(task), stdin) != NULL)
-            {
-                task[strcspn(task, "\n")] = '\0';
-                erfolg = add(task);
-            }
-            break;
+    case 1:
+        printf("Task: ");
+        if (fgets(task, sizeof(task), stdin) != NULL)
+        {
+            task[strcspn(task, "\n")] = '\0';
+            erfolg = add(task);
+        }
+        break;
 
+    case 2:
+        erfolg = show();
+        break;
 
-        case 2:
-            erfolg = show();
-            break;
-
-        default:
-            printf("Ungueltige Eingabe");
-            return 0;
+    default:
+        printf("Ungueltige Eingabe");
+        return 0;
     }
 
     if (erfolg)

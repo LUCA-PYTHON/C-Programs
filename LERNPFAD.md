@@ -2,7 +2,7 @@
 
 > Diese Datei wird automatisch von `tools/build_lernpfad.py` erzeugt. Änderungen bitte in den Headern der `.c`-Dateien machen.
 
-**35 Programme in 10 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
+**36 Programme in 11 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
 
 ## 00 · Test Projekt
 
@@ -100,6 +100,14 @@ Ordner: [`08_dateien_lesen_schreiben/`](08_dateien_lesen_schreiben/)
 | [Dateien beschreiben mit Eingabe](08_dateien_lesen_schreiben/datei_schreibenEingabe.c) | Professionell | dateien, string |
 | [Dateien beschreiben mit Eingabe/Speicher/Löschen](08_dateien_lesen_schreiben/datei_schreibenEingabeErweiterung.c) | Professionell | dateien, string, while, schleifen |
 | [ToDO Liste](08_dateien_lesen_schreiben/to-do.c) | Professionell | dateien, while, schleifen, funktionen, switch/case |
+
+## 09 · Structs
+
+Ordner: [`09_Structs/`](09_Structs/)
+
+| Titel | Schwierigkeit | Themen |
+| --- | --- | --- |
+| [Structs verwenden](09_Structs/struct_buch.c) | Einsteiger | struct |
 
 ## 98 · Taschenrechner
 
