@@ -1,3 +1,9 @@
+/*
+ * titel: Dateien beschreiben
+ * nr: 8.0
+ * schwierigkeit: 2
+ * themen: dateien
+ */
 #include <stdio.h>
 
 int main(void)
