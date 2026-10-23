@@ -11,7 +11,8 @@
 a  --> Zahl
 */
 
-int main(void){
+int main(void)
+{
     int a = 1, b = 2, c = 3;
 
     int *z = &a;
@@ -39,5 +40,4 @@ int main(void){
     printf("Zahlen verdrehen\n");
     printf("a = %i, b = %i, c = %i\n", a, b, c);
     printf("x = %p, y = %p, x = %p", (void *)x, (void *)y, (void *)z);
-
 }
