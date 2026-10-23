@@ -1,0 +1,3 @@
+Hallo Welt!
+Hier lernen wir das lesen von:
+Dateien mit fgets

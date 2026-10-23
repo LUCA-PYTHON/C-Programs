@@ -8,7 +8,7 @@
 
 int main(void)
 {
-    FILE *datei = fopen("database/dateien/test.txt", "w");
+    FILE *datei = fopen("database/dateien/schreiben.txt", "w");
 
     if (datei == NULL)
     {
