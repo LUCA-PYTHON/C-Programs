@@ -1,3 +1,9 @@
+/*
+ * titel: Dateien beschreiben mit Eingabe
+ * nr: 8.4
+ * schwierigkeit: 3
+ * themen: dateien, string
+ */
 #include <stdio.h>
 #include <string.h>
 

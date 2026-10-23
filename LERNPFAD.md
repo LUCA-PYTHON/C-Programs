@@ -97,7 +97,7 @@ Ordner: [`08_dateien_lesen_schreiben/`](08_dateien_lesen_schreiben/)
 | [Dateien beschreiben](08_dateien_lesen_schreiben/datei_schreiben.c) | Fortgeschritten | dateien |
 | [Dateien lesen](08_dateien_lesen_schreiben/datei_lesen.c) | Fortgeschritten | dateien, while, schleifen |
 | [Listen in Datei schreiben](08_dateien_lesen_schreiben/datei_schreibenListe.c) | Fortgeschritten | dateien, arrays |
-| [datei schreibenEingabe](08_dateien_lesen_schreiben/datei_schreibenEingabe.c) | – | – |
+| [Dateien beschreiben mit Eingabe](08_dateien_lesen_schreiben/datei_schreibenEingabe.c) | Professionell | dateien, string |
 
 ## 98 · Taschenrechner
 
