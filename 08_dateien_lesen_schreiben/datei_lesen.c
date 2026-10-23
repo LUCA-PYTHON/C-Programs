@@ -2,7 +2,7 @@
  * titel: Dateien lesen
  * nr: 8.1
  * schwierigkeit: 2
- * themen: dateien
+ * themen: dateien, while, schleifen
  */
 #include <stdio.h>
 
