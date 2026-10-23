@@ -2,7 +2,7 @@
 
 > Diese Datei wird automatisch von `tools/build_lernpfad.py` erzeugt. Änderungen bitte in den Headern der `.c`-Dateien machen.
 
-**27 Programme in 9 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
+**28 Programme in 9 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
 
 ## 00 · Test Projekt
 
@@ -85,6 +85,7 @@ Ordner: [`07_pointer_const_funktionen/`](07_pointer_const_funktionen/)
 | --- | --- | --- |
 | [Konstanten mit const](07_pointer_const_funktionen/constVariablen.c) | Einsteiger | const, variablen |
 | [Pointer Erklärung](07_pointer_const_funktionen/pointer.c) | Professionell | pointer, variablen, funktionen |
+| [Pointer Übung](07_pointer_const_funktionen/UebungPointer.c) | Professionell | pointer, variablen |
 
 ## 98 · Taschenrechner
 
