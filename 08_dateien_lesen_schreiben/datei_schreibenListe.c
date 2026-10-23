@@ -1,30 +1,38 @@
 /*
- * titel: JSON Dateien beschreiben
- * nr: 8.3
+ * titel: Listen in Datei schreiben
+ * nr: 8.2
  * schwierigkeit: 2
- * themen: dateien, json
+ * themen: dateien, arrays
  */
+
 #include <stdio.h>
 
 int main(void)
 {
-    FILE *datei = fopen("database/dateien/schreibenListe.json", "w");
+    const char *liste[] = {
+        "Teil1",
+        "Teil2",
+        "Teil3"
+    };
+
+    int anzahl = sizeof(liste) / sizeof(liste[0]);
+
+    FILE *datei = fopen("database/dateien/schreibenListe.txt", "w");
 
     if (datei == NULL)
     {
-        printf("Datei nicht gefunden");
+        perror("Fehler beim Öffnen der Datei");
         return 1;
     }
 
-    fprintf(datei, "[\n");
-    fprintf(datei, "    \"Teil1\",\n");
-    fprintf(datei, "    \"Teil2\",\n");
-    fprintf(datei, "    \"Teil3\"\n");
-    fprintf(datei, "]\n");
+    for (int i = 0; i < anzahl; i++)
+    {
+        fprintf(datei, "%s\n", liste[i]);
+    }
 
     fclose(datei);
 
-    printf("Datei wurde erfolgreich beschrieben");
+    printf("Datei wurde erfolgreich beschrieben.\n");
 
     return 0;
 }
