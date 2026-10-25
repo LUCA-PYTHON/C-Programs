@@ -13,8 +13,8 @@ Schritt für Schritt weiter.
 - [x] Strings und strcmp
 - [x] Switch-case
 - [x] Arrays
-- [ ] Pointer
-- [ ] Structs
+- [x] Pointer
+- [x] Structs
 - [ ] Dynamischer Speicher
 - [ ] Dateien einlesen und schreiben
 - [ ] Struct und Datenkapselung
