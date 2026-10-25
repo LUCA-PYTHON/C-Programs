@@ -120,11 +120,15 @@ Ordner: [`10_strukturen_debbuging/`](10_strukturen_debbuging/)
 | --- | --- | --- |
 | [Compiler-Warnungen verstehen](10_strukturen_debbuging/warnungen.c) | Einsteiger | debugging, compiler, warnungen |
 
-### Projekte
+### Projekt 10.1 · [Projektstrukturen](10_strukturen_debbuging/00_projektstrukturen/)
 
-| Projekt | Beschreibung |
+Ordner: [`00_projektstrukturen/`](10_strukturen_debbuging/00_projektstrukturen/)
+
+| Datei | Zweck |
 | --- | --- |
-| [00_projektstrukturen/](10_strukturen_debbuging/00_projektstrukturen/) | Mehrdateien-Projekt: main.c, rechner.c |
+| [main.c](10_strukturen_debbuging/00_projektstrukturen/main.c) | Hauptprogramm |
+| [rechner.c](10_strukturen_debbuging/00_projektstrukturen/rechner.c) | C-Quelldatei |
+| [rechnen.h](10_strukturen_debbuging/00_projektstrukturen/rechnen.h) | Header: Funktionsdeklarationen |
 
 ## 98 · Taschenrechner
 

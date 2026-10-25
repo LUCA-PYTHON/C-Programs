@@ -1,29 +1,13 @@
 #!/usr/bin/env python3
 """
-Erzeugt den Lernpfad für das C-Programs-Repository.
+Erzeugt LERNPFAD.md automatisch aus den Headern der C-Dateien.
 
-Liest den Kommentar-Header am Anfang jeder .c-Datei in den nummerierten
-Ordnern (00_..., 01_...) und erzeugt daraus LERNPFAD.md.
+- C-Dateien direkt im Themenordner werden als Übungen angezeigt.
+- Unterordner mit .c-Dateien werden als Projekte innerhalb des Kapitels angezeigt.
+- Projektdateien (.c und .h) werden einzeln verlinkt.
+- Unterstützt --add-missing, --check und --strict.
 
-C-Dateien direkt im Themenordner erscheinen als einzelne Übungen.
-Unterordner mit direkt enthaltenen .c-Dateien erscheinen separat als Projekte,
-damit zusammengehörige Dateien wie main.c, rechnen.c und rechnen.h nicht als
-unabhängige Übungen aufgelistet werden.
-
-Header-Format (ganz am Dateianfang):
-
-    /*
-     * titel: for-Schleife
-     * nr: 3.0
-     * schwierigkeit: 1
-     * themen: schleifen, for
-     */
-
-Schwierigkeit: 1 = Einsteiger, 2 = Fortgeschritten, 3 = Professionell
-("level" funktioniert als Schlüsselwort ebenfalls).
-
-Aufrufe (aus dem Repo-Hauptverzeichnis):
-
+Aufrufe im Repository-Hauptverzeichnis:
     python tools/build_lernpfad.py
     python tools/build_lernpfad.py --add-missing
     python tools/build_lernpfad.py --check
@@ -42,9 +26,9 @@ from urllib.parse import quote
 ROOT = Path(__file__).resolve().parent.parent
 
 # Einstellungen ---------------------------------------------------------------
-FOLDER_PATTERN = re.compile(r"^\d{2}_")  # nur Ordner wie 03_Schleifen
-EXCLUDE_DIRS: set[str] = set()           # z. B. {"00_test_projekt"}
-SKIP_PARTS = {"build", "bin", "obj"}     # Unterordner, die ignoriert werden
+FOLDER_PATTERN = re.compile(r"^\d{2}_")
+EXCLUDE_DIRS: set[str] = set()
+SKIP_PARTS = {"build", "bin", "obj"}
 LEVELS = {1: "Einsteiger", 2: "Fortgeschritten", 3: "Professionell"}
 KEYS = {"titel", "nr", "schwierigkeit", "level", "themen"}
 OUTPUT_FILE = "LERNPFAD.md"
@@ -90,8 +74,10 @@ def parse_header(text: str) -> dict[str, str]:
         return {}
 
     data: dict[str, str] = {}
+
     for line in match.group(1).splitlines():
         match_line = LINE_RE.match(line)
+
         if match_line and match_line.group(1).lower() in KEYS:
             data[match_line.group(1).lower()] = match_line.group(2)
 
@@ -108,6 +94,7 @@ def missing_keys(data: dict[str, str]) -> list[str]:
         missing.append("titel")
 
     level = data.get("level", "")
+
     if not level.isdigit() or int(level) not in LEVELS:
         missing.append("schwierigkeit")
 
@@ -115,10 +102,12 @@ def missing_keys(data: dict[str, str]) -> list[str]:
 
 
 def parse_nr(value: str) -> tuple[int, ...] | None:
-    """'3.10' -> (3, 10), damit 3.10 nach 3.9 kommt. Ungültig -> None."""
+    """'3.10' wird als (3, 10) interpretiert, damit es nach 3.9 kommt."""
     parts = value.strip().split(".")
+
     if parts and all(part.isdigit() for part in parts):
         return tuple(int(part) for part in parts)
+
     return None
 
 
@@ -141,7 +130,7 @@ def read_program(path: Path) -> Program:
     )
 
 
-# Dateien und Ordner finden ----------------------------------------------------
+# Ordner und Dateien finden ---------------------------------------------------
 def number_dirs() -> list[Path]:
     return sorted(
         path
@@ -153,7 +142,7 @@ def number_dirs() -> list[Path]:
 
 
 def c_files(folder: Path) -> list[Path]:
-    """Nur .c-Dateien direkt im Themenordner; Unterordner werden separat gezeigt."""
+    """Nur C-Dateien direkt im Themenordner als Übungen behandeln."""
     return sorted(
         path
         for path in folder.glob("*.c")
@@ -162,7 +151,7 @@ def c_files(folder: Path) -> list[Path]:
 
 
 def all_c_files(folder: Path) -> list[Path]:
-    """Alle .c-Dateien rekursiv finden, z. B. für --add-missing."""
+    """Alle C-Dateien rekursiv finden, unter anderem für --add-missing."""
     return sorted(
         path
         for path in folder.rglob("*.c")
@@ -171,7 +160,12 @@ def all_c_files(folder: Path) -> list[Path]:
 
 
 def project_dirs(folder: Path) -> list[Path]:
-    """Direkte Unterordner mit mindestens einer direkt enthaltenen .c-Datei."""
+    """
+    Direkte Unterordner mit C-Dateien erkennen.
+
+    So werden beispielsweise main.c und rechner.c innerhalb von
+    00_projektstrukturen als zusammengehöriges Projekt dargestellt.
+    """
     return sorted(
         path
         for path in folder.iterdir()
@@ -186,6 +180,7 @@ def collect() -> list[Folder]:
 
     for directory in number_dirs():
         programs = [read_program(path) for path in c_files(directory)]
+
         programs.sort(
             key=lambda program: (
                 program.nr is None,
@@ -195,14 +190,13 @@ def collect() -> list[Folder]:
             )
         )
 
-        # Ein Themenblock wird auch dann angezeigt, wenn er nur Projektordner hat.
         if programs or project_dirs(directory):
             folders.append(Folder(directory.name, programs))
 
     return folders
 
 
-# Fehlende Header ergänzen -----------------------------------------------------
+# Fehlende Header ergänzen ----------------------------------------------------
 def add_header(path: Path) -> bool:
     raw = path.read_bytes()
     bom = b"\xef\xbb\xbf" if raw.startswith(b"\xef\xbb\xbf") else b""
@@ -224,10 +218,11 @@ def add_header(path: Path) -> bool:
 
     header = (newline.join(lines) + newline + newline).encode("utf-8")
     path.write_bytes(bom + header + body)
+
     return True
 
 
-# Ausgabe erzeugen -------------------------------------------------------------
+# Markdown-Ausgabe ------------------------------------------------------------
 def cell(text: str) -> str:
     return text.replace("|", r"\|") or "–"
 
@@ -238,6 +233,7 @@ def link(path: Path) -> str:
 
 def render_lernpfad(folders: list[Folder]) -> str:
     total = sum(len(folder.programs) for folder in folders)
+
     out = [
         "# Lernpfad",
         "",
@@ -262,6 +258,7 @@ def render_lernpfad(folders: list[Folder]) -> str:
         if folder.programs:
             for program in folder.programs:
                 level = LEVELS.get(program.level, "–")
+
                 out.append(
                     f"| [{cell(program.titel)}]({link(program.path)}) | {level} "
                     f"| {cell(', '.join(program.themen))} |"
@@ -271,30 +268,49 @@ def render_lernpfad(folders: list[Folder]) -> str:
 
         out.append("")
 
-        # Unterordner mit C-Dateien als Projekte anzeigen, statt deren .c-Dateien
-        # einzeln in der Haupttabelle des Lernpfads aufzuführen.
+        # Projekte direkt im jeweiligen Kapitel darstellen.
         projects = project_dirs(ROOT / folder.name)
-        if projects:
+
+        for project_index, project in enumerate(projects, start=1):
+            relative_path = project.relative_to(ROOT).as_posix()
+            project_link = quote(relative_path) + "/"
+            project_number = f"{folder.number}.{project_index}"
+            project_title = folder_title(project.name)
+
             out += [
-                "### Projekte",
+                f"### Projekt {project_number} · "
+                f"[{project_title}]({project_link})",
                 "",
-                "| Projekt | Beschreibung |",
+                f"Ordner: [`{project.name}/`]({project_link})",
+                "",
+                "| Datei | Zweck |",
                 "| --- | --- |",
             ]
 
-            for project in projects:
-                relative_path = project.relative_to(ROOT).as_posix()
-                project_link = quote(relative_path) + "/"
-                source_files = sorted(path.name for path in project.glob("*.c"))
-                file_summary = ", ".join(source_files)
-                description = (
-                    f"Mehrdateien-Projekt: {file_summary}"
-                    if file_summary
-                    else "C-Projekt"
+            # C-Dateien und Header-Dateien sammeln.
+            project_files = sorted(
+                [*project.glob("*.c"), *project.glob("*.h")],
+                key=lambda item: (
+                    item.suffix.lower() != ".c",
+                    item.name.lower(),
+                ),
+            )
+
+            for project_file in project_files:
+                file_link = quote(
+                    project_file.relative_to(ROOT).as_posix()
                 )
+
+                if project_file.suffix.lower() == ".h":
+                    purpose = "Header: Funktionsdeklarationen"
+                elif project_file.stem.lower() == "main":
+                    purpose = "Hauptprogramm"
+                else:
+                    purpose = "C-Quelldatei"
+
                 out.append(
-                    f"| [{cell(project.name)}/]({project_link}) "
-                    f"| {cell(description)} |"
+                    f"| [{cell(project_file.name)}]({file_link}) "
+                    f"| {purpose} |"
                 )
 
             out.append("")
@@ -302,13 +318,14 @@ def render_lernpfad(folders: list[Folder]) -> str:
     return "\n".join(out).rstrip() + "\n"
 
 
-# Dateien lesen/schreiben ------------------------------------------------------
+# Dateien lesen und schreiben -------------------------------------------------
 def read_normalized(path: Path) -> tuple[str, str]:
     if not path.exists():
         return "", "\n"
 
     raw = path.read_bytes().decode("utf-8")
     newline = "\r\n" if "\r\n" in raw else "\n"
+
     return raw.replace("\r\n", "\n"), newline
 
 
@@ -320,26 +337,30 @@ def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
 
 
-# Hauptprogramm ----------------------------------------------------------------
+# Hauptprogramm ---------------------------------------------------------------
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Erzeugt LERNPFAD.md aus den Headern der .c-Dateien."
     )
+
     parser.add_argument(
         "--add-missing",
         action="store_true",
         help="fügt fehlende Header als Gerüst in .c-Dateien ein",
     )
+
     parser.add_argument(
         "--check",
         action="store_true",
         help="schreibt nichts; Fehlercode 1, wenn Dateien veraltet sind",
     )
+
     parser.add_argument(
         "--strict",
         action="store_true",
         help="Fehlercode 1, wenn Header fehlen oder unvollständig sind",
     )
+
     args = parser.parse_args()
 
     for stream in (sys.stdout, sys.stderr):
@@ -353,11 +374,17 @@ def main() -> int:
             for path in all_c_files(directory)
             if add_header(path)
         ]
+
         for path in added:
             print(f"Header ergänzt: {rel(path)}")
-        print(f"{len(added)} Header ergänzt. Bitte Schwierigkeit und Themen prüfen.")
+
+        print(
+            f"{len(added)} Header ergänzt. "
+            "Bitte Schwierigkeit und Themen prüfen."
+        )
 
     folders = collect()
+
     if not folders:
         print(
             "Keine nummerierten Ordner mit .c-Dateien oder Projekten gefunden.",
@@ -382,6 +409,7 @@ def main() -> int:
     output_path = ROOT / OUTPUT_FILE
     output_content = render_lernpfad(folders)
     current_content, newline = read_normalized(output_path)
+
     changed = current_content != output_content
     strict_fail = args.strict and bool(incomplete)
 
@@ -390,6 +418,7 @@ def main() -> int:
             print(f"Veraltet: {rel(output_path)}")
         else:
             print("Alles aktuell.")
+
         return 1 if changed or strict_fail else 0
 
     if changed:
