@@ -2,7 +2,7 @@
 
 > Diese Datei wird automatisch von `tools/build_lernpfad.py` erzeugt. Änderungen bitte in den Headern der `.c`-Dateien machen.
 
-**37 Programme in 11 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
+**38 Programme in 11 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
 
 ## 00 · Test Projekt
 
@@ -109,6 +109,7 @@ Ordner: [`09_Structs_Datenkapselung/`](09_Structs_Datenkapselung/)
 | --- | --- | --- |
 | [Structs verwenden](09_Structs_Datenkapselung/struct.c) | Einsteiger | struct |
 | [Structs verwenden mit Funktionen](09_Structs_Datenkapselung/struct_funktionen.c) | Fortgeschritten | struct, string, funktionen |
+| [Structs verwenden mit Funktionen Erweiterung](09_Structs_Datenkapselung/struct_funktionenErweiterung.c) | Fortgeschritten | struct, funktionen, string, schleifen, for |
 
 ## 98 · Taschenrechner
 
