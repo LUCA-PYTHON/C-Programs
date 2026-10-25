@@ -3,7 +3,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "C: Aktuelle Datei starten (F11)",
+            "label": "C: Einzelne Datei starten (F11)",
             "type": "shell",
             "command": "cmd.exe",
             "args": [
@@ -14,11 +14,28 @@
                 "${file}"
             ],
             "options": {
-                "cwd": "${workspaceFolder}",
-                "shell": {
-                    "executable": "C:\\Windows\\System32\\cmd.exe",
-                    "args": ["/d", "/c"]
-                }
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$gcc",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": true
+            }
+        },
+        {
+            "label": "C: Ganzes Projekt starten (F12)",
+            "type": "shell",
+            "command": "cmd.exe",
+            "args": [
+                "/d",
+                "/c",
+                "call",
+                "run-c-folder.bat",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": "$gcc",
             "presentation": {

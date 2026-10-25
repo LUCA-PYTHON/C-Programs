@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Erzeugt den Lernpfad für das C-Programs-Repository.
+"""
+Erzeugt den Lernpfad für das C-Programs-Repository.
 
 Liest den Kommentar-Header am Anfang jeder .c-Datei in den nummerierten
-Ordnern (00_..., 01_..., ...) und erzeugt daraus
+Ordnern (00_..., 01_...) und erzeugt daraus LERNPFAD.md.
 
-  * LERNPFAD.md  (eigene Datei, wird komplett neu geschrieben)
-
+C-Dateien direkt im Themenordner erscheinen als einzelne Übungen.
+Unterordner mit direkt enthaltenen .c-Dateien erscheinen separat als Projekte,
+damit zusammengehörige Dateien wie main.c, rechnen.c und rechnen.h nicht als
+unabhängige Übungen aufgelistet werden.
 
 Header-Format (ganz am Dateianfang):
 
@@ -16,16 +19,17 @@ Header-Format (ganz am Dateianfang):
      * themen: schleifen, for
      */
 
-schwierigkeit: 1 = Einsteiger, 2 = Aufbau, 3 = Fortgeschritten
-("level" funktioniert als Schlüsselwort ebenfalls)
+Schwierigkeit: 1 = Einsteiger, 2 = Fortgeschritten, 3 = Professionell
+("level" funktioniert als Schlüsselwort ebenfalls).
 
 Aufrufe (aus dem Repo-Hauptverzeichnis):
 
-    python tools/build_lernpfad.py                 # Dateien erzeugen/aktualisieren
-    python tools/build_lernpfad.py --add-missing   # fehlende Header als Gerüst einfügen
-    python tools/build_lernpfad.py --check         # nur prüfen, ob alles aktuell ist
-    python tools/build_lernpfad.py --strict        # Fehlercode, wenn Header unvollständig
+    python tools/build_lernpfad.py
+    python tools/build_lernpfad.py --add-missing
+    python tools/build_lernpfad.py --check
+    python tools/build_lernpfad.py --strict
 """
+
 from __future__ import annotations
 
 import argparse
@@ -37,10 +41,10 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Einstellungen -------------------------------------------------------------
-FOLDER_PATTERN = re.compile(r"^\d{2}_")      # nur Ordner wie 03_Schleifen
-EXCLUDE_DIRS: set[str] = set()               # z. B. {"00_test_projekt"}
-SKIP_PARTS = {"build", "bin", "obj"}         # Unterordner, die ignoriert werden
+# Einstellungen ---------------------------------------------------------------
+FOLDER_PATTERN = re.compile(r"^\d{2}_")  # nur Ordner wie 03_Schleifen
+EXCLUDE_DIRS: set[str] = set()           # z. B. {"00_test_projekt"}
+SKIP_PARTS = {"build", "bin", "obj"}     # Unterordner, die ignoriert werden
 LEVELS = {1: "Einsteiger", 2: "Fortgeschritten", 3: "Professionell"}
 KEYS = {"titel", "nr", "schwierigkeit", "level", "themen"}
 OUTPUT_FILE = "LERNPFAD.md"
@@ -73,7 +77,7 @@ class Folder:
         return folder_title(self.name)
 
 
-# Header lesen --------------------------------------------------------------
+# Header lesen ----------------------------------------------------------------
 def folder_title(name: str) -> str:
     if "_" not in name:
         return name
@@ -84,23 +88,29 @@ def parse_header(text: str) -> dict[str, str]:
     match = HEADER_RE.match(text)
     if not match:
         return {}
+
     data: dict[str, str] = {}
     for line in match.group(1).splitlines():
-        m = LINE_RE.match(line)
-        if m and m.group(1).lower() in KEYS:
-            data[m.group(1).lower()] = m.group(2)
+        match_line = LINE_RE.match(line)
+        if match_line and match_line.group(1).lower() in KEYS:
+            data[match_line.group(1).lower()] = match_line.group(2)
+
     if "schwierigkeit" in data:
         data.setdefault("level", data.pop("schwierigkeit"))
+
     return data
 
 
 def missing_keys(data: dict[str, str]) -> list[str]:
     missing = []
+
     if not data.get("titel"):
         missing.append("titel")
+
     level = data.get("level", "")
     if not level.isdigit() or int(level) not in LEVELS:
         missing.append("schwierigkeit")
+
     return missing
 
 
@@ -116,65 +126,110 @@ def read_program(path: Path) -> Program:
     text = path.read_bytes().decode("utf-8", errors="replace")
     data = parse_header(text)
     level = data.get("level", "")
+
     return Program(
         path=path,
         nr=parse_nr(data.get("nr", "")),
         titel=data.get("titel") or path.stem.replace("_", " "),
         level=int(level) if level.isdigit() and int(level) in LEVELS else None,
-        themen=[t.strip() for t in data.get("themen", "").split(",") if t.strip()],
+        themen=[
+            topic.strip()
+            for topic in data.get("themen", "").split(",")
+            if topic.strip()
+        ],
         missing=missing_keys(data),
     )
 
 
-# Dateien finden ------------------------------------------------------------
+# Dateien und Ordner finden ----------------------------------------------------
 def number_dirs() -> list[Path]:
     return sorted(
-        p for p in ROOT.iterdir()
-        if p.is_dir() and FOLDER_PATTERN.match(p.name) and p.name not in EXCLUDE_DIRS
+        path
+        for path in ROOT.iterdir()
+        if path.is_dir()
+        and FOLDER_PATTERN.match(path.name)
+        and path.name not in EXCLUDE_DIRS
     )
 
 
 def c_files(folder: Path) -> list[Path]:
+    """Nur .c-Dateien direkt im Themenordner; Unterordner werden separat gezeigt."""
     return sorted(
-        p for p in folder.rglob("*.c")
-        if not SKIP_PARTS & set(p.relative_to(folder).parts)
+        path
+        for path in folder.glob("*.c")
+        if not SKIP_PARTS.intersection(path.relative_to(folder).parts)
+    )
+
+
+def all_c_files(folder: Path) -> list[Path]:
+    """Alle .c-Dateien rekursiv finden, z. B. für --add-missing."""
+    return sorted(
+        path
+        for path in folder.rglob("*.c")
+        if not SKIP_PARTS.intersection(path.relative_to(folder).parts)
+    )
+
+
+def project_dirs(folder: Path) -> list[Path]:
+    """Direkte Unterordner mit mindestens einer direkt enthaltenen .c-Datei."""
+    return sorted(
+        path
+        for path in folder.iterdir()
+        if path.is_dir()
+        and path.name not in SKIP_PARTS
+        and any(path.glob("*.c"))
     )
 
 
 def collect() -> list[Folder]:
     folders = []
-    for d in number_dirs():
-        programs = [read_program(p) for p in c_files(d)]
-        programs.sort(key=lambda p: (p.nr is None, p.nr or (), p.level if p.level is not None else 99, p.path.name.lower()))
-        if programs:
-            folders.append(Folder(d.name, programs))
+
+    for directory in number_dirs():
+        programs = [read_program(path) for path in c_files(directory)]
+        programs.sort(
+            key=lambda program: (
+                program.nr is None,
+                program.nr or (),
+                program.level if program.level is not None else 99,
+                program.path.name.lower(),
+            )
+        )
+
+        # Ein Themenblock wird auch dann angezeigt, wenn er nur Projektordner hat.
+        if programs or project_dirs(directory):
+            folders.append(Folder(directory.name, programs))
+
     return folders
 
 
-# Fehlende Header ergänzen --------------------------------------------------
+# Fehlende Header ergänzen -----------------------------------------------------
 def add_header(path: Path) -> bool:
     raw = path.read_bytes()
     bom = b"\xef\xbb\xbf" if raw.startswith(b"\xef\xbb\xbf") else b""
     body = raw[len(bom):]
+
     if "titel" in parse_header(body.decode("utf-8", errors="replace")):
         return False
-    nl = "\r\n" if b"\r\n" in body else "\n"
-    top = path.relative_to(ROOT).parts[0]
+
+    newline = "\r\n" if b"\r\n" in body else "\n"
+    top_folder = path.relative_to(ROOT).parts[0]
+
     lines = [
         "/*",
         f" * titel: {path.stem.replace('_', ' ')}",
         " * schwierigkeit: 1",
-        f" * themen: {folder_title(top).lower()}",
+        f" * themen: {folder_title(top_folder).lower()}",
         " */",
     ]
-    header = (nl.join(lines) + nl + nl).encode("utf-8")
+
+    header = (newline.join(lines) + newline + newline).encode("utf-8")
     path.write_bytes(bom + header + body)
     return True
 
 
-# Ausgabe erzeugen ----------------------------------------------------------
+# Ausgabe erzeugen -------------------------------------------------------------
 def cell(text: str) -> str:
-    return text.replace("|", "\\|") or "–"
+    return text.replace("|", r"\|") or "–"
 
 
 def link(path: Path) -> str:
@@ -182,103 +237,167 @@ def link(path: Path) -> str:
 
 
 def render_lernpfad(folders: list[Folder]) -> str:
-    total = sum(len(f.programs) for f in folders)
+    total = sum(len(folder.programs) for folder in folders)
     out = [
         "# Lernpfad",
         "",
         "> Diese Datei wird automatisch von `tools/build_lernpfad.py` erzeugt. "
         "Änderungen bitte in den Headern der `.c`-Dateien machen.",
         "",
-        f"**{total} Programme in {len(folders)} Themenblöcken.** "
+        f"**{total} Übungen in {len(folders)} Themenblöcken.** "
         "Empfohlene Reihenfolge: von oben nach unten.",
         "",
     ]
-    for f in folders:
+
+    for folder in folders:
         out += [
-            f"## {f.number} · {f.title}",
+            f"## {folder.number} · {folder.title}",
             "",
-            f"Ordner: [`{f.name}/`]({quote(f.name)}/)",
+            f"Ordner: [`{folder.name}/`]({quote(folder.name)}/)",
             "",
             "| Titel | Schwierigkeit | Themen |",
             "| --- | --- | --- |",
         ]
-        for p in f.programs:
-            level = LEVELS.get(p.level, "–")
-            out.append(
-                f"| [{cell(p.titel)}]({link(p.path)}) | {level} "
-                f"| {cell(', '.join(p.themen))} |"
-            )
+
+        if folder.programs:
+            for program in folder.programs:
+                level = LEVELS.get(program.level, "–")
+                out.append(
+                    f"| [{cell(program.titel)}]({link(program.path)}) | {level} "
+                    f"| {cell(', '.join(program.themen))} |"
+                )
+        else:
+            out.append("| – | – | – |")
+
         out.append("")
+
+        # Unterordner mit C-Dateien als Projekte anzeigen, statt deren .c-Dateien
+        # einzeln in der Haupttabelle des Lernpfads aufzuführen.
+        projects = project_dirs(ROOT / folder.name)
+        if projects:
+            out += [
+                "### Projekte",
+                "",
+                "| Projekt | Beschreibung |",
+                "| --- | --- |",
+            ]
+
+            for project in projects:
+                relative_path = project.relative_to(ROOT).as_posix()
+                project_link = quote(relative_path) + "/"
+                source_files = sorted(path.name for path in project.glob("*.c"))
+                file_summary = ", ".join(source_files)
+                description = (
+                    f"Mehrdateien-Projekt: {file_summary}"
+                    if file_summary
+                    else "C-Projekt"
+                )
+                out.append(
+                    f"| [{cell(project.name)}/]({project_link}) "
+                    f"| {cell(description)} |"
+                )
+
+            out.append("")
+
     return "\n".join(out).rstrip() + "\n"
 
 
-# Dateien lesen/schreiben (Zeilenenden bleiben erhalten) --------------------
+# Dateien lesen/schreiben ------------------------------------------------------
 def read_normalized(path: Path) -> tuple[str, str]:
     if not path.exists():
         return "", "\n"
+
     raw = path.read_bytes().decode("utf-8")
-    nl = "\r\n" if "\r\n" in raw else "\n"
-    return raw.replace("\r\n", "\n"), nl
+    newline = "\r\n" if "\r\n" in raw else "\n"
+    return raw.replace("\r\n", "\n"), newline
 
 
-def write_normalized(path: Path, content: str, nl: str) -> None:
-    path.write_bytes(content.replace("\n", nl).encode("utf-8"))
+def write_normalized(path: Path, content: str, newline: str) -> None:
+    path.write_bytes(content.replace("\n", newline).encode("utf-8"))
 
 
 def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
 
 
-# Hauptprogramm -------------------------------------------------------------
+# Hauptprogramm ----------------------------------------------------------------
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Erzeugt LERNPFAD.md aus den Headern der .c-Dateien.")
-    ap.add_argument("--add-missing", action="store_true",
-                    help="fügt fehlende Header als Gerüst in .c-Dateien ein")
-    ap.add_argument("--check", action="store_true",
-                    help="schreibt nichts, Fehlercode 1 wenn Dateien veraltet sind")
-    ap.add_argument("--strict", action="store_true",
-                    help="Fehlercode 1, wenn Header fehlen oder unvollständig sind")
-    args = ap.parse_args()
+    parser = argparse.ArgumentParser(
+        description="Erzeugt LERNPFAD.md aus den Headern der .c-Dateien."
+    )
+    parser.add_argument(
+        "--add-missing",
+        action="store_true",
+        help="fügt fehlende Header als Gerüst in .c-Dateien ein",
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="schreibt nichts; Fehlercode 1, wenn Dateien veraltet sind",
+    )
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Fehlercode 1, wenn Header fehlen oder unvollständig sind",
+    )
+    args = parser.parse_args()
 
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8")
 
     if args.add_missing:
-        added = [p for d in number_dirs() for p in c_files(d) if add_header(p)]
-        for p in added:
-            print(f"Header ergänzt: {rel(p)}")
+        added = [
+            path
+            for directory in number_dirs()
+            for path in all_c_files(directory)
+            if add_header(path)
+        ]
+        for path in added:
+            print(f"Header ergänzt: {rel(path)}")
         print(f"{len(added)} Header ergänzt. Bitte Schwierigkeit und Themen prüfen.")
 
     folders = collect()
     if not folders:
-        print("Keine nummerierten Ordner mit .c-Dateien gefunden.", file=sys.stderr)
+        print(
+            "Keine nummerierten Ordner mit .c-Dateien oder Projekten gefunden.",
+            file=sys.stderr,
+        )
         return 1
 
-    incomplete = [p for f in folders for p in f.programs if p.missing]
-    for p in incomplete:
-        print(f"Warnung: {rel(p.path)} – Header unvollständig ({', '.join(p.missing)})",
-              file=sys.stderr)
+    incomplete = [
+        program
+        for folder in folders
+        for program in folder.programs
+        if program.missing
+    ]
 
-    outputs: dict[Path, tuple[str, str]] = {
-        ROOT / OUTPUT_FILE: (render_lernpfad(folders), "\n"),
-    }
-    changed = [p for p, (content, _) in outputs.items() if read_normalized(p)[0] != content]
+    for program in incomplete:
+        print(
+            f"Warnung: {rel(program.path)} – Header unvollständig "
+            f"({', '.join(program.missing)})",
+            file=sys.stderr,
+        )
+
+    output_path = ROOT / OUTPUT_FILE
+    output_content = render_lernpfad(folders)
+    current_content, newline = read_normalized(output_path)
+    changed = current_content != output_content
     strict_fail = args.strict and bool(incomplete)
 
     if args.check:
-        for p in changed:
-            print(f"Veraltet: {rel(p)}")
-        if not changed:
+        if changed:
+            print(f"Veraltet: {rel(output_path)}")
+        else:
             print("Alles aktuell.")
-        return 1 if (changed or strict_fail) else 0
+        return 1 if changed or strict_fail else 0
 
-    for p in changed:
-        content, nl = outputs[p]
-        write_normalized(p, content, nl)
-        print(f"Aktualisiert: {rel(p)}")
-    if not changed:
+    if changed:
+        write_normalized(output_path, output_content, newline)
+        print(f"Aktualisiert: {rel(output_path)}")
+    else:
         print("Alles aktuell.")
+
     return 1 if strict_fail else 0
 
 
