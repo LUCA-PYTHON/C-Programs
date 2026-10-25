@@ -2,7 +2,7 @@
 
 > Diese Datei wird automatisch von `tools/build_lernpfad.py` erzeugt. Änderungen bitte in den Headern der `.c`-Dateien machen.
 
-**42 Programme in 12 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
+**40 Übungen in 12 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
 
 ## 00 · Test Projekt
 
@@ -119,8 +119,12 @@ Ordner: [`10_strukturen_debbuging/`](10_strukturen_debbuging/)
 | Titel | Schwierigkeit | Themen |
 | --- | --- | --- |
 | [Compiler-Warnungen verstehen](10_strukturen_debbuging/warnungen.c) | Einsteiger | debugging, compiler, warnungen |
-| [main](10_strukturen_debbuging/00_projektstrukturen/main.c) | – | – |
-| [rechner](10_strukturen_debbuging/00_projektstrukturen/rechner.c) | – | – |
+
+### Projekte
+
+| Projekt | Beschreibung |
+| --- | --- |
+| [00_projektstrukturen/](10_strukturen_debbuging/00_projektstrukturen/) | Mehrdateien-Projekt: main.c, rechner.c |
 
 ## 98 · Taschenrechner
 
