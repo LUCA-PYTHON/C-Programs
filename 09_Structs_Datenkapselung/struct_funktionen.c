@@ -50,7 +50,7 @@ int main(void)
 
     struct buch meinBuch2 = buchErstellen("Teil 2 von C-Lernen", 310);
 
-    printf("%s; %d Seiten\n", meinBuch2.titel, meinBuch2.seiten);
+    anzeigen(meinBuch2);
 
     return 0;
     
