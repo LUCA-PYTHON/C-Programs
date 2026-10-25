@@ -2,7 +2,7 @@
 
 > Diese Datei wird automatisch von `tools/build_lernpfad.py` erzeugt. Änderungen bitte in den Headern der `.c`-Dateien machen.
 
-**39 Programme in 11 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
+**42 Programme in 12 Themenblöcken.** Empfohlene Reihenfolge: von oben nach unten.
 
 ## 00 · Test Projekt
 
@@ -111,6 +111,16 @@ Ordner: [`09_Structs_Datenkapselung/`](09_Structs_Datenkapselung/)
 | [Structs verwenden mit Funktionen](09_Structs_Datenkapselung/struct_funktionen.c) | Fortgeschritten | struct, string, funktionen |
 | [Structs verwenden mit Funktionen Erweiterung](09_Structs_Datenkapselung/struct_funktionenErweiterung.c) | Fortgeschritten | struct, funktionen, string, schleifen, for |
 | [Structs Ändern](09_Structs_Datenkapselung/structs_aendernEingabe.c) | Professionell | struct, funktionen, string |
+
+## 10 · Strukturen Debbuging
+
+Ordner: [`10_strukturen_debbuging/`](10_strukturen_debbuging/)
+
+| Titel | Schwierigkeit | Themen |
+| --- | --- | --- |
+| [Compiler-Warnungen verstehen](10_strukturen_debbuging/warnungen.c) | Einsteiger | debugging, compiler, warnungen |
+| [main](10_strukturen_debbuging/00_projektstrukturen/main.c) | – | – |
+| [rechner](10_strukturen_debbuging/00_projektstrukturen/rechner.c) | – | – |
 
 ## 98 · Taschenrechner
 
