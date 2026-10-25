@@ -130,6 +130,16 @@ Ordner: [`00_projektstrukturen/`](10_strukturen_debbuging/00_projektstrukturen/)
 | [rechner.c](10_strukturen_debbuging/00_projektstrukturen/rechner.c) | C-Quelldatei |
 | [rechnen.h](10_strukturen_debbuging/00_projektstrukturen/rechnen.h) | Header: Funktionsdeklarationen |
 
+### Projekt 10.2 · [Uebung1](10_strukturen_debbuging/01_uebung1/)
+
+Ordner: [`01_uebung1/`](10_strukturen_debbuging/01_uebung1/)
+
+| Datei | Zweck |
+| --- | --- |
+| [main.c](10_strukturen_debbuging/01_uebung1/main.c) | Hauptprogramm |
+| [modul.c](10_strukturen_debbuging/01_uebung1/modul.c) | C-Quelldatei |
+| [modul.h](10_strukturen_debbuging/01_uebung1/modul.h) | Header: Funktionsdeklarationen |
+
 ## 98 · Taschenrechner
 
 Ordner: [`98_taschenrechner/`](98_taschenrechner/)
