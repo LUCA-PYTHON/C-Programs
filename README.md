@@ -15,12 +15,12 @@ Schritt für Schritt weiter.
 - [x] Arrays
 - [x] Pointer
 - [x] Structs
-- [ ] Dynamischer Speicher
-- [ ] Dateien einlesen und schreiben
-- [ ] Struct und Datenkapselung
-- [ ] Debbuging
-- [ ] Git, Tests und Projektqualität
-- [ ] Abschlussprojekt
+- [x] Dynamischer Speicher
+- [x] Dateien einlesen und schreiben
+- [x] Struct und Datenkapselung
+- [x] Debbuging
+- [x] Git, Tests und Projektqualität
+- [x] Abschlussprojekt
 
 ## 🚀 Projekte
 
